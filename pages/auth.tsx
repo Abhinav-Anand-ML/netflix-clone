@@ -18,8 +18,8 @@ const Auth = () => {
     const [variant, setVariant] = useState('login');
 
     const toggleVariant = useCallback(() => {
-        setVariant((currentVariant) => currentVariant == 'login' ? 'register' : 'login');
-    }, [])
+        setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login');
+    }, []);
 
     const login = useCallback(async () => {
         try {
@@ -62,34 +62,36 @@ const Auth = () => {
                             {variant == 'login' ? 'Sign In' : 'Register'}
                         </h2>
                         <div className="flex flex-col gap-4">
-                            {variant == 'register' && (
+                            {variant === 'register' && (
                                 <Input 
-                                    label="Username"
-                                    onChange={(ev: any) => setName(ev.target.value)}
                                     id="name"
+                                    type="text"
+                                    label="Username"
                                     value={name}
+                                    onChange={(ev: any) => setName(ev.target.value)}
                                 />
                             )}
                             <Input 
-                                label="Email"
-                                onChange={(ev: any) => setEmail(ev.target.value)}
                                 id="email"
                                 type="email"
+                                label="Email"
                                 value={email}
+                                onChange={(ev: any) => setEmail(ev.target.value)}
                             />
                             <Input 
-                                label="Password"
-                                onChange={(ev: any) => setPassword(ev.target.value)}
                                 id="password"
                                 type="password"
+                                label="Password"
                                 value={password}
+                                onChange={(ev: any) => setPassword(ev.target.value)}
                             />
                         </div>
                         <button onClick={variant === 'login' ? login : register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
-                            {variant == 'login' ? 'Login' : 'Sign up'}
+                            {variant === 'login' ? 'Login' : 'Sign up'}
                         </button>
                         <div className="flex flex-row items-center gap-4 mt-8 justify-center">
                             <div
+                                onClick={() => signIn('google', { callbackUrl: '/' })}
                                 className="
                                     w-10
                                     h-10
@@ -106,6 +108,7 @@ const Auth = () => {
                                 <FcGoogle size={30} />
                             </div>
                             <div
+                                onClick={() => signIn('github', { callbackUrl: '/' })}
                                 className="
                                     w-10
                                     h-10
@@ -123,16 +126,16 @@ const Auth = () => {
                             </div>
                         </div>
                         <p className="text-neutral-500 mt-12">
-                            {variant == 'login' ? 'First time using Netflix?' : 'Already have an account?'}
+                            {variant === 'login' ? 'First time using Netflix?' : 'Already have an account?'}
                             <span onClick={toggleVariant} className="text-white ml-1 hover:underline cursor-pointer">
-                                {variant == 'login' ? 'Create an account' : 'Sign In'}
+                                {variant === 'login' ? 'Create an account' : 'Sign In'}
                             </span>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Auth;
