@@ -2,7 +2,11 @@
 
 ## Getting Started on local machine
 
-Clone the repo on you local system and run:
+Clone the repo on you local system.
+
+Update the .env file
+
+Run:
 
 ```bash
 npm run dev
