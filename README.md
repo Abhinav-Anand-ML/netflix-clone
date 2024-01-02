@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Visit the deployed application on your browser to see the result:
 
-https://netflix-clone-8fn4p49m3-abhinav-anands-projects-be1fb420.vercel.app/auth
+https://netflix-clone-six-phi-87.vercel.app/auth
 
 
 
